@@ -1,0 +1,52 @@
+#root {
+  max-width: 1200px; /* Limita el ancho máximo */
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+  min-height: 100vh; /* Ocupa al menos toda la altura de la ventana */
+  padding: 1rem; /* Espaciado interno */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden; /* Oculta solo el scroll horizontal */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+  flex-direction: row; /* Configura el wrap por filas */
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  min-height: 100vh; /* Asegura que la altura mínima sea igual a la ventana */
+}
+
+.card {
+  width: 15rem;
+  height: 15rem;
+  border: #888;
+  background: #888;
+  margin: 10px;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
