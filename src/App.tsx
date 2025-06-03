@@ -4,6 +4,7 @@ import Counter from "./Components/Counter.tsx";
 import UserForm from "./Components/UserForm.tsx";
 import PostList from "./Components/PostList.tsx";
 import useToggle from "./Components/UseToggle.tsx";
+import Tasks from "./Components/Tasks.tsx";
 import "./App.css";
 
 // Exercise 1: Create a new component called "Greeting" that accepts a "name" prop and displays a greeting message.
@@ -35,6 +36,7 @@ function App() {
       <Greeting name="John" />
       <Counter />
       <UserForm />
+      <Tasks />
       <button onClick={setToggle}>
         {isToggled ? "Switch to Light Theme" : "Switch to Dark Theme"}
       </button>

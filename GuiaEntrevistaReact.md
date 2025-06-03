@@ -96,13 +96,16 @@ useEffect(() => {
 
 **Example:**
 
-```jsx
+````jsx
 const useToggle = (initial = false) => {
   const [value, setValue] = React.useState(initial);
   const toggle = React.useCallback(() => setValue((v) => !v), []);
-  return [value, toggle];
+  // useMemo example
+  const memoizedValue = React.useMemo(() => {
+    return value ? "On" : "Off";
+  }, [value]);
+  return [memoizedValue, toggle];
 };
-```
 
 ---
 
@@ -124,7 +127,7 @@ const vdom = {
     { type: "button", props: { onClick: () => {} }, children: ["Click"] },
   ],
 };
-```
+````
 
 ---
 
@@ -216,6 +219,25 @@ const fetchData = () => async (dispatch) => {
   const data = await fetch("/api/data").then((res) => res.json());
   dispatch({ type: "FETCH_SUCCESS", payload: data });
 };
+
+// how athunk is used in a Redux store
+// reducer form send to createStore
+import { createStore } from "redux";
+const reducer = (state = {}, action) => {
+  switch (action.type) {
+    case "FETCH_START":
+      return { ...state, loading: true };
+    case "FETCH_SUCCESS":
+      return { ...state, loading: false, data: action.payload };
+    default:
+      return state;
+  }
+};
+
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+const store = createStore(reducer, applyMiddleware(thunk)));
+
 ```
 
 ---
@@ -409,6 +431,7 @@ Expose state and actions via a Context Provider at the top of the tree.
 **Example:**
 
 ```jsx
+const AuthContext = React.createContext();|
 function AuthProvider({ children }) {
   const [user, setUser] = React.useState(null);
   const login = (u) => setUser(u);

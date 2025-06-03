@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+
 import "./index.css";
 
 // Exercise 1: Create a new component called "Greeting" that accepts a "name" prop and displays a greeting message.

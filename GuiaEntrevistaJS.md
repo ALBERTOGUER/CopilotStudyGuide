@@ -565,12 +565,50 @@ const [x, ...rest] = arr;
 
 ---
 
-## 12. This and Bind
+## 12. This and Bind, call and apply
 
 **Explanation:**
-`this` refers to the current execution context. Its value depends on how the function is called. `bind` allows you to set the value of `this` in a function.
-
+`this` refers to the current execution context. Its value depends on how the function is called.
+`bind` allows you to set the value of `this` in a function.
+`call` and `apply` are methods that allow you to invoke a function with a specific `this` value and arguments.
 **Example:**
+
+```js
+// Example 1: Using bind when the object is out of scope
+const obj = {
+  name: "Ana",
+  greet(greeting) {
+    return `${greeting}, I'm ${this.name}`;
+  },
+};
+const greet = obj.greet;
+const boundGreet = greet.bind(obj, "Hello");
+console.log(boundGreet()); // "Hello, I'm Ana"
+```
+
+```js
+// Example 2: Using call to set 'this' and pass parameters
+const obj = {
+  name: "Ana",
+  greet(greeting) {
+    return `${greeting}, I'm ${this.name}`;
+  },
+};
+const greet = obj.greet;
+console.log(greet.call(obj, "Hi")); // "Hi, I'm Ana"
+```
+
+```js
+// Example 3: Using apply to set 'this' and pass parameters as an array
+const obj = {
+  name: "Ana",
+  greet(greeting) {
+    return `${greeting}, I'm ${this.name}`;
+  },
+};
+const greet = obj.greet;
+console.log(greet.apply(obj, ["Hey"])); // "Hey, I'm Ana"
+```
 
 ```js
 const obj = {
